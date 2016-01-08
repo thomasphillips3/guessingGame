@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <!--
 Thomas Phillips
 CodeFellows 201
@@ -20,6 +21,11 @@ January 7, 2016
       width: auto;
       text-align: center;
     }
+
+    *{
+      font-family: sans-serif;
+    }
+
     </style>
 
   </head>
@@ -31,6 +37,31 @@ January 7, 2016
       </h1>
       <p><em>How well do you know me?</em></p>
     </div>
+
+    <h3>What's my hometown?</h3>
+    <select id="hometown" onchange="hometownBox()">
+      <option value= ""> -- Select -- <br>
+      <option value="chicago"> Chicago<br>
+      <option value="detroit"> Detroit<br>
+      <option value="san francisco"> San Francisco<br>
+    </select>
+
+    <p>
+      <span id="result1"></span>
+    </p>
+
+    <script>
+    function hometownBox(){
+      var ans = document.getElementById("hometown").value;
+      if (ans === "chicago"){
+        document.getElementById("result1").innerHTML = "WRONG!";
+      } else if (ans === "san francisco"){
+        document.getElementById("result1").innerHTML = "WRONG!";
+      } else{
+        document.getElementById("result1").innerHTML = "RIGHT!";
+      }
+    }
+    </script>
 
   </body>
 </html>
