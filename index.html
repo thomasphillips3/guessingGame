@@ -16,7 +16,7 @@ January 7, 2016
       #header{
       background-color: blue;
       color: grey;
-      border: 1px solid black;
+      border: 10px solid grey;
       height: auto;
       width: auto;
       text-align: center;
@@ -24,6 +24,14 @@ January 7, 2016
 
     *{
       font-family: sans-serif;
+    }
+
+    .question{
+      background-color: #000080;
+      border: 10px dashed white;
+      border-radius: 5%;
+      text-align: center;
+      color:white;
     }
 
     </style>
@@ -38,27 +46,53 @@ January 7, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
-    <h3>What's my hometown?</h3>
-    <select id="hometown" onchange="hometownBox()">
-      <option value= ""> -- Select -- <br>
-      <option value="chicago"> Chicago<br>
-      <option value="detroit"> Detroit<br>
-      <option value="san francisco"> San Francisco<br>
-    </select>
+    <div class="question">
+      <h3>What's my hometown?</h3>
+      <select id="hometown" onchange="hometownBox()">
+        <option value= ""> -- Select -- <br>
+        <option value="chicago"> Chicago<br>
+        <option value="detroit"> Detroit<br>
+        <option value="san francisco"> San Francisco<br>
+      </select>
 
-    <p>
-      <span id="result1"></span>
-    </p>
+      <p>
+        <span id="result1"></span>
+      </p>
+    </div>
+
+    <div class="question">
+      <h3>I played this instrument in high school</h3>
+      <select id="instrument" onchange="instrumentBox()">
+        <option value= ""> -- Select -- <br>
+        <option value="saxophone"> Saxophone<br>
+        <option value="drums"> Drums<br>
+        <option value="xylophone"> Xylophone<br>
+      </select>
+      <p>
+        <span id="result2"></span>
+      </p>
+    </div>
 
     <script>
     function hometownBox(){
       var ans = document.getElementById("hometown").value;
-      if (ans === "chicago"){
-        document.getElementById("result1").innerHTML = "WRONG!";
-      } else if (ans === "san francisco"){
-        document.getElementById("result1").innerHTML = "WRONG!";
-      } else{
+      if (ans === "detroit"){
         document.getElementById("result1").innerHTML = "RIGHT!";
+      } else if(ans === ""){
+        document.getElementById("result1").innerHTML = "";
+      } else{
+        document.getElementById("result1").innerHTML = "WRONG!";
+      }
+    }
+
+    function instrumentBox(){
+      var ans = document.getElementById("instrument").value;
+      if (ans === "saxophone"){
+        document.getElementById("result2").innerHTML = "RIGHT!";
+      } else if (ans === ""){
+        document.getElementById("result2").innerHTML = "";
+      } else{
+        document.getElementById("result2").innerHTML = "WRONG!";
       }
     }
     </script>
