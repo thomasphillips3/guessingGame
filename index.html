@@ -73,6 +73,20 @@ January 7, 2016
       </p>
     </div>
 
+    <div class="question">
+      <h3>My first car was a</h3>
+      <select id="car" onchange="carBox()">
+        <option value=""> -- Select -- <br>
+        <option value="acura"> Acura<br>
+        <option value="oldsmobile"> Oldsmobile<br>
+        <option value="buick"> Buick<br>
+      </select>
+    <p>
+      <span id="result3"></span>
+    </p>
+
+    </div>
+
     <script>
     function hometownBox(){
       var ans = document.getElementById("hometown").value;
@@ -93,6 +107,17 @@ January 7, 2016
         document.getElementById("result2").innerHTML = "";
       } else{
         document.getElementById("result2").innerHTML = "WRONG!";
+      }
+    }
+
+    function carBox(){
+      var ans = document.getElementById("car").value;
+      if (ans === "buick"){
+        document.getElementById("result3").innerHTML = "RIGHT!";
+      } else if (ans === ""){
+        document.getElementById("result3").innerHTML = "";
+      } else{
+        document.getElementById("result3").innerHTML = "WRONG!";
       }
     }
     </script>
