@@ -1,8 +1,9 @@
 var MAX=5;
 var answers=[];
 var i=0;
+var rightCount = 0;
+var wrongCount = 0;
 
-$("#hometownSpell").hide();
 // JS for handling hometown response
 function hometownClick(){
   if (document.getElementById("dtw").checked){
@@ -10,10 +11,14 @@ function hometownClick(){
     document.getElementById("result1").innerHTML = "Correct!";
     $("#hometownForm").hide();
     $("#hometownSpell").show();
+    rightCount++;
   } else {
     console.log("Wrong hometown");
     document.getElementById("result1").innerHTML = "Wrong! Try again...";
+    wrongCount++
   }
+  // document.getElementById("rightCount").innerHTML = rightCount;
+  // document.getElementById("wrongCount").innerHTML = wrongCount;
 }
 
 // Make sure my city is spelled right
@@ -23,12 +28,16 @@ function spellCity(){
   if(city === "Detroit"){
     document.getElementById("spellResult").innerHTML = "Right!";
     console.log("right");
+    rightCount++;
   } else {
     document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
+    wrongCount++;
   }
   // if(city.substring(0,1) === city.substring(0,1).toLowerCase){
   //   console.log("lower case");
   // }
+  // document.getElementById("rightCount").innerHTML = rightCount;
+  // document.getElementById("wrongCount").innerHTML = wrongCount;
 }
 
 // JS for handling instrument response
