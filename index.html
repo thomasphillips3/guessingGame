@@ -1,43 +1,23 @@
 <!DOCTYPE html>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script>var MAX=5;</script>
-
 <!--
 Thomas Phillips
 CodeFellows 201
-Guessing Game
-January 7, 2016
+Guessing Game v2
+January 10, 2016
 -->
+
+<!-- JavaScript/ JQuery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="guess.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="guess.css">
+
 <html>
   <head>
     <meta charset="utf-8">
     <title>Guessing Game</title>
-    <meta name="description" content="Class 2. In-class assignment">
-
-    <style>
-      #header{
-      background-color: blue;
-      color: grey;
-      border: 10px solid grey;
-      height: auto;
-      width: auto;
-      text-align: center;
-    }
-
-    *{
-      font-family: sans-serif;
-    }
-
-    .question{
-      background-color: #000080;
-      border: 10px dashed white;
-      border-radius: 5%;
-      text-align: center;
-      color:white;
-    }
-
-    </style>
-
+    <meta name="description" content="Class 3. In-class assignment">
   </head>
   <body>
 
@@ -48,52 +28,65 @@ January 7, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
-<!-- Div for Hometown question -->
-    <div class="question">
-      <h3>What's my hometown?</h3>
-      <select id="hometown" onchange="hometownBox()">
-        <option value= ""> -- Select -- <br>
-        <option value="chicago"> Chicago<br>
-        <option value="detroit"> Detroit<br>
-        <option value="san francisco"> San Francisco<br>
-      </select>
+<fieldset>
+  <legend>Thomas Phillips</legend>
+  <!-- Form for hometown question -->
+  <form id="hometownForm" onchange="hometownClick()">
+    <h3> What's my hometown?</h3>
+    <div>
+      <input type="radio" name="hometown" id="chi"> Chicago</input></div>
+    <div>
+      <input type="radio" name="hometown" id="dtw"> Detroit</div>
+    <div>
+      <input type="radio" name="hometown" id="sfo"> San Francisco</div>
+  </form>
+  <p><span id="result1"></span></p>
 
-      <p>
-        <span id="result1"></span>
-      </p>
-    </div>
+  <!-- This form will show only after the first question is answered correctly -->
+  <form id="hometownSpell" style ="display:none">
+    <h3> How do you spell that?</h3>
+    <input type="text" name="city" id="city"/>
+    <input type="button" value="Check" onclick="spellCity()"/>
+  </form>
+  <span id="spellResult"></span>
+  <div id="correct1"><h3>Question 1</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
-<!-- Div for Instrument question -->
-    <div class="question">
-      <h3>I played this instrument in high school</h3>
-      <select id="instrument" onchange="instrumentBox()">
-        <option value= ""> -- Select -- <br>
-        <option value="saxophone"> Saxophone<br>
-        <option value="drums"> Drums<br>
-        <option value="xylophone"> Xylophone<br>
-      </select>
-      <p>
-        <span id="result2"></span>
-      </p>
-    </div>
+<!-- Form for band question -->
+  <form id="band">
+    <h3> Did I play in band?</h3>
+    <input type="text" name="played" id="played"/>
+    <div class="tooltip">Enter "yes" or "no".</div>
+    <input type="button" value="Answer" onclick="playedBand()">
+  </form>
 
-<!-- Div for Car question -->
-    <div class="question">
-      <h3>My first car was a</h3>
-      <select id="car" onchange="carBox()">
-        <option value=""> -- Select -- <br>
-        <option value="acura"> Acura<br>
-        <option value="oldsmobile"> Oldsmobile<br>
-        <option value="buick"> Buick<br>
-      </select>
-    <p>
-      <span id="result3"></span>
-    </p>
+<!-- Form for instrument question -->
+  <form id="instrument" onchange="instrumentBox()">
+    <h3> I played this instrument in high school band: </h3>
+    <input type="radio" name="instrument" id="sax"> Saxophone</input>
+    <input type="radio" name="instrument" id="drum"/> Drums</input>
+    <input type="radio" name="instrument" id="clar"/> Clarinet</input>
+    <input type="radio" name="instrument" id="tuba"/> Tuba</input>
+  </form>
+  <p><span id="result2"></span></p>
+  <div id="correct2"><h3>Question 2</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
-    </div>
+<!-- Form for car question -->
+  <form id="carQuestion">
+    <h3>My first car was a</h3>
+    <select id="firstCar" onchange="carBox()">
+      <option value=""/> -- Select -- <br>
+      <option value="acura" id="acu"/> Acura<br>
+      <option value="oldsmobile" id="olds"/> Oldsmobile<br>
+      <option value="buick" id="buick"/> Buick<br>
+    </select>
+  <p><span id="result3"></span></p>
+</form>
+<div id="correct3"><h3>Question 3</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
+</fieldset>
 
 <!-- Div for stretch question -->
-    <div class="stretch">
+    <fieldset id="stretch">
+      <legend><span id="bonus">Bonus</span></legend>
       <h3>Guess a number between 0 and 5:</h3>
       <script>
         // When this div loads, generate a random number, and set guessed to false
@@ -108,78 +101,9 @@ January 7, 2016
       <p>
         <span id="result4"><br></span>
       </p>
-    </div>
+    </fieldset>
 
-    <script>
-    // JS for handling hometown response
-    function hometownBox(){
-      var ans = document.getElementById("hometown").value;
-      if (ans === "detroit"){
-        document.getElementById("result1").innerHTML = "RIGHT!";
-      } else if(ans === ""){
-        document.getElementById("result1").innerHTML = "";
-      } else{
-        document.getElementById("result1").innerHTML = "WRONG!";
-      }
-    }
 
-    // JS for handling instrument response
-    function instrumentBox(){
-      var ans = document.getElementById("instrument").value;
-      if (ans === "saxophone"){
-        document.getElementById("result2").innerHTML = "RIGHT!";
-      } else if (ans === ""){
-        document.getElementById("result2").innerHTML = "";
-      } else{
-        document.getElementById("result2").innerHTML = "WRONG!";
-      }
-    }
-
-    // JS for handling car response
-    function carBox(){
-      var ans = document.getElementById("car").value;
-      if (ans === "buick"){
-        document.getElementById("result3").innerHTML = "RIGHT!";
-      } else if (ans === ""){
-        document.getElementById("result3").innerHTML = "";
-      } else{
-        document.getElementById("result3").innerHTML = "WRONG!";
-      }
-    }
-
-    // JS for handling guesses for stretch response
-    function guessField(){
-      // Store the input entered into the text field into a variable "ans" and immediately cast to int
-      var ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
-      console.log("secret: " + secret + "\nyour guess: " + ans);
-
-      do // Used a do-while, because we always want to this block to execute at least once
-      {
-        console.log("Entered while loop\nsecret: " + secret + "\nans: " + ans + "\nguessed: " + guessed);
-
-        if(ans > secret){
-          console.log("Your guess is too high");
-          document.getElementById("result4").innerHTML = ans + " is too high. Guess again";
-          break;
-        } else if (ans < secret){
-          console.log("Your guess is too low");
-          document.getElementById("result4").innerHTML = ans + " is too low. Guess again";
-          break;
-        } else if (ans === secret){
-          console.log("You guessed it!");
-          document.getElementById("result4").innerHTML = "You correctly guessed the number " + ans + ". A new number random number will be generated now";
-          alert("You correctly guessed the number " + ans + ". A new number random number will be generated now");
-          secret = Math.floor(Math.random() * (MAX+1));
-          console.log("New secret: " + secret);
-          guessed=true;
-        } else { // If this else is reached, the input must be invalid. Prompt the user, and get a new guess.
-          console.log("Invalid input. Enter a number");
-          document.getElementById("result4").innerHTML = "Invalid input. Please enter a number between 0 and 5";
-          break;
-        }
-      } while(guessed === false);
-    }
-    </script>
 
   </body>
 </html>

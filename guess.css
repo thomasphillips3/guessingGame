@@ -1,0 +1,71 @@
+#header{
+  background-color: blue;
+  color: grey;
+  border: 1px solid grey;
+  height: auto;
+  width: auto;
+  text-align: center;
+}
+
+*{
+  font-family: sans-serif;
+}
+
+.question{
+  background-color: blue;
+  border: 1px solid black;
+  text-align: center;
+  color:white;
+}
+
+.tooltip{
+  display: none;
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+#played:hover + .tooltip{
+  display: block;
+  background-color: yellow;
+}
+
+#instrument{
+  display: none;
+}
+
+#band{
+  display: none;
+}
+
+#correct1{
+  display: none;
+  color: green;
+}
+
+#correct2{
+  display: none;
+  color: green;
+}
+
+#correct3{
+  display: none;
+  color: green;
+}
+
+#carQuestion{
+  display:none;
+}
+
+#stretch{
+  /*display:none;*/
+  background-color: navy;
+  color:white;
+
+}
+
+#bonus{
+  /*color:black;*/
+  background-color: navy;
+  border: 1px solid black;
+  padding: 2px 2px 2px 2px;
+}
