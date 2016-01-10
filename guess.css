@@ -17,3 +17,18 @@
   text-align: center;
   color:white;
 }
+
+.tooltip{
+  display: none;
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+#played:hover + .tooltip{
+  display: block;
+  background-color: yellow;
+}
+
+#instrument{
+  display:none;
+}

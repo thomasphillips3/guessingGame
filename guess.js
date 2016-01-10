@@ -40,14 +40,27 @@ function spellCity(){
   // document.getElementById("wrongCount").innerHTML = wrongCount;
 }
 
+function playedBand(){
+  var yesOrNo = document.getElementById("played").value;
+  if (yesOrNo.substring(0,1) === yesOrNo.substring(0,1).toUpperCase()) {
+    console.log("lowercase only, please");
+    wrongCount++;
+  } else if (yesOrNo === "yes"){
+    rightCount++;
+    $("#band").hide();
+    $("#instrument").show();
+  } else {
+    console.log("wrong. i played in band");
+    wrongCount++;
+  }
+}
 // JS for handling instrument response
 function instrumentBox(){
-  var ans = document.getElementById("instrument").value;
-  if (ans === "saxophone"){
+  if (document.getElementById("sax").checked){
+    rightCount++;
     document.getElementById("result2").innerHTML = "RIGHT!";
-  } else if (ans === ""){
-    document.getElementById("result2").innerHTML = "";
   } else{
+    wrongCount++
     document.getElementById("result2").innerHTML = "WRONG!";
   }
 }

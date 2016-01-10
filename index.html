@@ -29,30 +29,42 @@ January 10, 2016
 <!-- Div for hometown question -->
 <fieldset>
   <legend>Thomas Phillips</legend>
-<form id="hometownForm" onchange="hometownClick()">
-  <h3> What's my hometown?</h3>
-  <div>
-    <input type="radio" name="hometown" id="chi"> Chicago</input></div>
-  <div>
-    <input type="radio" name="hometown" id="dtw"> Detroit</div>
-  <div>
-    <input type="radio" name="hometown" id="sfo"> San Francisco</div>
-</form>
-<p>
-  <span id="result1"></span>
-</p>
+  <form id="hometownForm" onchange="hometownClick()">
+    <h3> What's my hometown?</h3>
+    <div>
+      <input type="radio" name="hometown" id="chi"> Chicago</input></div>
+    <div>
+      <input type="radio" name="hometown" id="dtw"> Detroit</div>
+    <div>
+      <input type="radio" name="hometown" id="sfo"> San Francisco</div>
+  </form>
+  <p><span id="result1"></span></p>
 
-<!-- This form will show only after the first question is answered correctly -->
-<form id="hometownSpell" style ="display:none">
-  <h3> How do you spell that?</h3>
-  <input type="text" name="city" id="city"/>
-  <input type="button" value="Check" onclick="spellCity()"/>
-</form>
-<span id="spellResult"></span>
-<span id="rightCount"></span>
-<span id="wrongCount"></span>
+  <!-- This form will show only after the first question is answered correctly -->
+  <form id="hometownSpell" style ="display:none">
+    <h3> How do you spell that?</h3>
+    <input type="text" name="city" id="city"/>
+    <input type="button" value="Check" onclick="spellCity()"/>
+  </form>
+  <span id="spellResult"></span>
 
-</fieldset>
+  <form id="band">
+    <h3> Did I play in band?</h3>
+    <input type="text" name="played" id="played"/>
+    <div class="tooltip">Enter "yes" or "no".</div>
+    <input type="button" value="Answer" onclick="playedBand()">
+  </form>
+
+  <form id="instrument" onchange="instrumentBox()">
+    <h3> I played this instrument in high school band: </h3>
+    <input type="radio" name="instrument" id="sax"> Saxophone</input>
+    <input type="radio" name="instrument" id="drum"/> Drums</input>
+    <input type="radio" name="instrument" id="clar"/> Clarinet</input>
+    <input type="radio" name="instrument" id="tuba"/> Tuba</input>
+  </form>
+  <p><span id="result2"></span></p>
+
+  </fieldset>
 <!-- Div for Instrument question -->
     <div class="question">
       <h3>I played this instrument in high school</h3>
@@ -62,9 +74,7 @@ January 10, 2016
         <option value="drums"> Drums<br>
         <option value="xylophone"> Xylophone<br>
       </select>
-      <p>
-        <span id="result2"></span>
-      </p>
+
     </div>
 
 <!-- Div for Car question -->
