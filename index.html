@@ -1,43 +1,21 @@
 <!DOCTYPE html>
+<!-- JavaScript/ JQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script>var MAX=5;</script>
+<script src="guess.js"></script>
 
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="guess.css">
 <!--
 Thomas Phillips
 CodeFellows 201
-Guessing Game
-January 7, 2016
+Guessing Game v2
+January 10, 2016
 -->
 <html>
   <head>
     <meta charset="utf-8">
     <title>Guessing Game</title>
-    <meta name="description" content="Class 2. In-class assignment">
-
-    <style>
-      #header{
-      background-color: blue;
-      color: grey;
-      border: 10px solid grey;
-      height: auto;
-      width: auto;
-      text-align: center;
-    }
-
-    *{
-      font-family: sans-serif;
-    }
-
-    .question{
-      background-color: #000080;
-      border: 10px dashed white;
-      border-radius: 5%;
-      text-align: center;
-      color:white;
-    }
-
-    </style>
-
+    <meta name="description" content="Class 3. In-class assignment">
   </head>
   <body>
 
@@ -48,21 +26,24 @@ January 7, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
-<!-- Div for Hometown question -->
-    <div class="question">
-      <h3>What's my hometown?</h3>
-      <select id="hometown" onchange="hometownBox()">
-        <option value= ""> -- Select -- <br>
-        <option value="chicago"> Chicago<br>
-        <option value="detroit"> Detroit<br>
-        <option value="san francisco"> San Francisco<br>
-      </select>
+<!-- Div for hometown question -->
+<fieldset>
+  <legend>Thomas Phillips</legend>
+<form id="hometownForm" onchange="hometownClick()">
+  <h3> What's my hometown?</h3>
+  <div>
+    <input type="radio" name="hometown" id="chi"> Chicago</input></div>
+  <div>
+    <input type="radio" name="hometown" id="dtw"> Detroit</div>
+  <div>
+    <input type="radio" name="hometown" id="sfo"> San Francisco</div>
+</form>
+<p>
+  <span id="result1"></span>
+</p>
 
-      <p>
-        <span id="result1"></span>
-      </p>
-    </div>
 
+</fieldset>
 <!-- Div for Instrument question -->
     <div class="question">
       <h3>I played this instrument in high school</h3>
@@ -110,76 +91,7 @@ January 7, 2016
       </p>
     </div>
 
-    <script>
-    // JS for handling hometown response
-    function hometownBox(){
-      var ans = document.getElementById("hometown").value;
-      if (ans === "detroit"){
-        document.getElementById("result1").innerHTML = "RIGHT!";
-      } else if(ans === ""){
-        document.getElementById("result1").innerHTML = "";
-      } else{
-        document.getElementById("result1").innerHTML = "WRONG!";
-      }
-    }
 
-    // JS for handling instrument response
-    function instrumentBox(){
-      var ans = document.getElementById("instrument").value;
-      if (ans === "saxophone"){
-        document.getElementById("result2").innerHTML = "RIGHT!";
-      } else if (ans === ""){
-        document.getElementById("result2").innerHTML = "";
-      } else{
-        document.getElementById("result2").innerHTML = "WRONG!";
-      }
-    }
-
-    // JS for handling car response
-    function carBox(){
-      var ans = document.getElementById("car").value;
-      if (ans === "buick"){
-        document.getElementById("result3").innerHTML = "RIGHT!";
-      } else if (ans === ""){
-        document.getElementById("result3").innerHTML = "";
-      } else{
-        document.getElementById("result3").innerHTML = "WRONG!";
-      }
-    }
-
-    // JS for handling guesses for stretch response
-    function guessField(){
-      // Store the input entered into the text field into a variable "ans" and immediately cast to int
-      var ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
-      console.log("secret: " + secret + "\nyour guess: " + ans);
-
-      do // Used a do-while, because we always want to this block to execute at least once
-      {
-        console.log("Entered while loop\nsecret: " + secret + "\nans: " + ans + "\nguessed: " + guessed);
-
-        if(ans > secret){
-          console.log("Your guess is too high");
-          document.getElementById("result4").innerHTML = ans + " is too high. Guess again";
-          break;
-        } else if (ans < secret){
-          console.log("Your guess is too low");
-          document.getElementById("result4").innerHTML = ans + " is too low. Guess again";
-          break;
-        } else if (ans === secret){
-          console.log("You guessed it!");
-          document.getElementById("result4").innerHTML = "You correctly guessed the number " + ans + ". A new number random number will be generated now";
-          alert("You correctly guessed the number " + ans + ". A new number random number will be generated now");
-          secret = Math.floor(Math.random() * (MAX+1));
-          console.log("New secret: " + secret);
-          guessed=true;
-        } else { // If this else is reached, the input must be invalid. Prompt the user, and get a new guess.
-          console.log("Invalid input. Enter a number");
-          document.getElementById("result4").innerHTML = "Invalid input. Please enter a number between 0 and 5";
-          break;
-        }
-      } while(guessed === false);
-    }
-    </script>
 
   </body>
 </html>

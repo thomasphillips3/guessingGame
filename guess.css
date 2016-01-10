@@ -1,0 +1,19 @@
+#header{
+  background-color: blue;
+  color: grey;
+  border: 1px solid grey;
+  height: auto;
+  width: auto;
+  text-align: center;
+}
+
+*{
+  font-family: sans-serif;
+}
+
+.question{
+  background-color: blue;
+  border: 1px solid black;
+  text-align: center;
+  color:white;
+}
