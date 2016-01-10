@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script></script>
+<script>var MAX=5;</script>
 
 <!--
 Thomas Phillips
@@ -91,7 +91,7 @@ January 7, 2016
 
     <div class="stretch">
       <h3>Guess a number between 0 and 5:</h3>
-      <script>var secret = Math.floor(Math.random() * (6));
+      <script>var secret = Math.floor(Math.random() * (MAX+1));
               var guessed=false;
       </script>
 
@@ -100,7 +100,7 @@ January 7, 2016
         <input type="text" name="number">
       </form>
       <p>
-        <span id="result4"></span>
+        <span id="result4"><br></span>
       </p>
 
     </div>
@@ -149,21 +149,23 @@ January 7, 2016
 
         if(ans > secret){
           console.log("Your guess is too high");
-          document.getElementById("result4").innerHTML = "Too high. Guess again";
-          ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
+          document.getElementById("result4").innerHTML = ans + " is too high. Guess again";
+          //ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
           break;
         } else if (ans < secret){
           console.log("Your guess is too low");
-          document.getElementById("result4").innerHTML = "Too low. Guess again";
+          document.getElementById("result4").innerHTML = ans + " is too low. Guess again";
           break;
         } else if (ans === secret){
           console.log("You guessed it!");
+          document.getElementById("result4").innerHTML = "You correctly guessed the number " + ans + ". A new number random number will be generated now";
           alert("You correctly guessed the number " + ans + ". A new number random number will be generated now");
-          secret = Math.floor(Math.random() * (6));
+          secret = Math.floor(Math.random() * (MAX+1));
           console.log("New secret: " + secret);
           guessed=true;
         } else{
           console.log("Invalid input. Enter a number");
+          document.getElementById("result4").innerHTML = ans + " is invalid. Please enter a number between 0 and 5";
           break;
         }
       } while(guessed === false);
