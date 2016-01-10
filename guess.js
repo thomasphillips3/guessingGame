@@ -8,7 +8,7 @@ var wrongCount = 0;
 function hometownClick(){
   if (document.getElementById("dtw").checked){
     console.log("Right hometown");
-    document.getElementById("result1").innerHTML = "Correct!";
+    document.getElementById("result1").innerHTML = "Right!";
     $("#hometownForm").hide();
     $("#hometownSpell").show();
     rightCount++;
@@ -28,6 +28,10 @@ function spellCity(){
   if(city === "Detroit"){
     document.getElementById("spellResult").innerHTML = "Right!";
     console.log("right");
+    $("#hometownSpell").hide();
+    $("#result1").hide();
+    $("#spellResult").hide();
+    $("#band").show();
     rightCount++;
   } else {
     document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
