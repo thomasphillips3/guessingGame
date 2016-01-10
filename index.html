@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<!-- JavaScript/ JQuery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="guess.js"></script>
-
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="guess.css">
 <!--
 Thomas Phillips
 CodeFellows 201
 Guessing Game v2
 January 10, 2016
 -->
+
+<!-- JavaScript/ JQuery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="guess.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="guess.css">
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -26,9 +28,9 @@ January 10, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
-<!-- Div for hometown question -->
 <fieldset>
   <legend>Thomas Phillips</legend>
+  <!-- Form for hometown question -->
   <form id="hometownForm" onchange="hometownClick()">
     <h3> What's my hometown?</h3>
     <div>
@@ -49,6 +51,7 @@ January 10, 2016
   <span id="spellResult"></span>
   <div id="correct1"><h3>Question 1</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
+<!-- Form for band question -->
   <form id="band">
     <h3> Did I play in band?</h3>
     <input type="text" name="played" id="played"/>
@@ -56,6 +59,7 @@ January 10, 2016
     <input type="button" value="Answer" onclick="playedBand()">
   </form>
 
+<!-- Form for instrument question -->
   <form id="instrument" onchange="instrumentBox()">
     <h3> I played this instrument in high school band: </h3>
     <input type="radio" name="instrument" id="sax"> Saxophone</input>
@@ -66,6 +70,7 @@ January 10, 2016
   <p><span id="result2"></span></p>
   <div id="correct2"><h3>Question 2</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
+<!-- Form for car question -->
   <form id="carQuestion">
     <h3>My first car was a</h3>
     <select id="firstCar" onchange="carBox()">
@@ -77,11 +82,7 @@ January 10, 2016
   <p><span id="result3"></span></p>
 </form>
 <div id="correct3"><h3>Question 3</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
-  </fieldset>
-
-
-<!-- Div for Car question -->
-
+</fieldset>
 
 <!-- Div for stretch question -->
     <div class="stretch">
