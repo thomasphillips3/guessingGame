@@ -72,6 +72,7 @@ function instrumentBox(){
     $("#instrument").hide();
     $("#correct2").show();
     $("#carQuestion").show();
+    console.log("Score = " + rightCount + "/" + (rightCount+wrongCount));
   } else{
     wrongCount++
     document.getElementById("result2").innerHTML = "WRONG!";

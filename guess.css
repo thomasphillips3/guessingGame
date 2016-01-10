@@ -55,3 +55,17 @@
 #carQuestion{
   display:none;
 }
+
+#stretch{
+  /*display:none;*/
+  background-color: navy;
+  color:white;
+
+}
+
+#bonus{
+  /*color:black;*/
+  background-color: navy;
+  border: 1px solid black;
+  padding: 2px 2px 2px 2px;
+}
