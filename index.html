@@ -48,6 +48,7 @@ January 7, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
+<!-- Div for Hometown question -->
     <div class="question">
       <h3>What's my hometown?</h3>
       <select id="hometown" onchange="hometownBox()">
@@ -62,6 +63,7 @@ January 7, 2016
       </p>
     </div>
 
+<!-- Div for Instrument question -->
     <div class="question">
       <h3>I played this instrument in high school</h3>
       <select id="instrument" onchange="instrumentBox()">
@@ -75,6 +77,7 @@ January 7, 2016
       </p>
     </div>
 
+<!-- Div for Car question -->
     <div class="question">
       <h3>My first car was a</h3>
       <select id="car" onchange="carBox()">
@@ -89,10 +92,13 @@ January 7, 2016
 
     </div>
 
+<!-- Div for stretch question -->
     <div class="stretch">
       <h3>Guess a number between 0 and 5:</h3>
-      <script>var secret = Math.floor(Math.random() * (MAX+1));
-              var guessed=false;
+      <script>
+        // When this div loads, generate a random number, and set guessed to false
+        var secret = Math.floor(Math.random() * (MAX+1));
+        var guessed=false;
       </script>
 
       <form id="numberGuess" oninput="guessField()">
@@ -102,10 +108,10 @@ January 7, 2016
       <p>
         <span id="result4"><br></span>
       </p>
-
     </div>
 
     <script>
+    // JS for handling hometown response
     function hometownBox(){
       var ans = document.getElementById("hometown").value;
       if (ans === "detroit"){
@@ -117,6 +123,7 @@ January 7, 2016
       }
     }
 
+    // JS for handling instrument response
     function instrumentBox(){
       var ans = document.getElementById("instrument").value;
       if (ans === "saxophone"){
@@ -128,6 +135,7 @@ January 7, 2016
       }
     }
 
+    // JS for handling car response
     function carBox(){
       var ans = document.getElementById("car").value;
       if (ans === "buick"){
@@ -139,18 +147,19 @@ January 7, 2016
       }
     }
 
+    // JS for handling guesses for stretch response
     function guessField(){
+      // Store the input entered into the text field into a variable "ans" and immediately cast to int
       var ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
       console.log("secret: " + secret + "\nyour guess: " + ans);
 
-      do
+      do // Used a do-while, because we always want to this block to execute at least once
       {
         console.log("Entered while loop\nsecret: " + secret + "\nans: " + ans + "\nguessed: " + guessed);
 
         if(ans > secret){
           console.log("Your guess is too high");
           document.getElementById("result4").innerHTML = ans + " is too high. Guess again";
-          //ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
           break;
         } else if (ans < secret){
           console.log("Your guess is too low");
@@ -163,7 +172,7 @@ January 7, 2016
           secret = Math.floor(Math.random() * (MAX+1));
           console.log("New secret: " + secret);
           guessed=true;
-        } else{
+        } else { // If this else is reached, the input must be invalid. Prompt the user, and get a new guess.
           console.log("Invalid input. Enter a number");
           document.getElementById("result4").innerHTML = "Invalid input. Please enter a number between 0 and 5";
           break;
