@@ -7,15 +7,17 @@ var wrongCount = 0;
 // JS for handling hometown response
 function hometownClick(){
   if (document.getElementById("dtw").checked){
+    rightCount++;
     console.log("Right hometown");
     document.getElementById("result1").innerHTML = "Right!";
+
+    // Hide previous question and display the next after a correct answer
     $("#hometownForm").hide();
     $("#hometownSpell").show();
-    rightCount++;
-  } else {
+  } else { // If not Detroit, it's wrong
+    wrongCount++
     console.log("Wrong hometown");
     document.getElementById("result1").innerHTML = "Wrong! Try again...";
-    wrongCount++
   }
   // document.getElementById("rightCount").innerHTML = rightCount;
   // document.getElementById("wrongCount").innerHTML = wrongCount;
@@ -26,13 +28,16 @@ function spellCity(){
   var city = document.getElementById("city").value;
   // Make sure the first letter is capitalized
   if(city === "Detroit"){
+    rightCount++;
     document.getElementById("spellResult").innerHTML = "Right!";
     console.log("right");
+
+    // Hide previous question and display the next after a correct answer
     $("#hometownSpell").hide();
     $("#result1").hide();
     $("#spellResult").hide();
+    $("#correct1").show();
     $("#band").show();
-    rightCount++;
   } else {
     document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
     wrongCount++;
@@ -63,6 +68,9 @@ function instrumentBox(){
   if (document.getElementById("sax").checked){
     rightCount++;
     document.getElementById("result2").innerHTML = "RIGHT!";
+    $("#result2").hide();
+    $("#instrument").hide();
+    $("#correct2").show();
   } else{
     wrongCount++
     document.getElementById("result2").innerHTML = "WRONG!";

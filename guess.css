@@ -36,3 +36,13 @@
 #band{
   display:none;
 }
+
+#correct1{
+  display:none;
+  color: green;
+}
+
+#correct2{
+  display:none;
+  color: green;
+}
