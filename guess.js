@@ -71,6 +71,7 @@ function instrumentBox(){
     $("#result2").hide();
     $("#instrument").hide();
     $("#correct2").show();
+    $("#carQuestion").show();
   } else{
     wrongCount++
     document.getElementById("result2").innerHTML = "WRONG!";
@@ -79,12 +80,18 @@ function instrumentBox(){
 
 // JS for handling car response
 function carBox(){
-  var ans = document.getElementById("car").value;
+  var ans = document.getElementById("firstCar").value;
   if (ans === "buick"){
+    rightCount++;
     document.getElementById("result3").innerHTML = "RIGHT!";
+    $("#result3").hide();
+    $("#carQuestion").hide();
+    $("#correct3").show();
   } else if (ans === ""){
+    // Don't count a blank submission as a wrong answer
     document.getElementById("result3").innerHTML = "";
   } else{
+    wrongCount++;
     document.getElementById("result3").innerHTML = "WRONG!";
   }
 }

@@ -30,19 +30,28 @@
 }
 
 #instrument{
-  display:none;
+  display: none;
 }
 
 #band{
-  display:none;
+  display: none;
 }
 
 #correct1{
-  display:none;
+  display: none;
   color: green;
 }
 
 #correct2{
-  display:none;
+  display: none;
   color: green;
+}
+
+#correct3{
+  display: none;
+  color: green;
+}
+
+#carQuestion{
+  display:none;
 }
