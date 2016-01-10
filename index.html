@@ -42,6 +42,13 @@ January 10, 2016
   <span id="result1"></span>
 </p>
 
+<!-- This form will show only after the first question is answered correctly -->
+<form id="hometownSpell" style ="display:none">
+  <h3> How do you spell that?</h3>
+  <input type="text" name="city" id="city"/>
+  <input type="button" value="Check" onclick="spellCity()"/>
+</form>
+<span id="spellResult"></span>
 
 </fieldset>
 <!-- Div for Instrument question -->
