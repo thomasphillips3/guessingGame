@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script></script>
+
 <!--
 Thomas Phillips
 CodeFellows 201
@@ -88,12 +90,18 @@ January 7, 2016
     </div>
 
     <div class="stretch">
-      <h3>Guess a number:</h3>
-      <form>
-        Pick a number:<br>
+      <h3>Guess a number between 0 and 5:</h3>
+      <script>var secret = Math.floor(Math.random() * (6));
+              var guessed=false;
+      </script>
+
+      <form id="numberGuess" oninput="guessField()">
+        Pick a number:
         <input type="text" name="number">
-        <input type="submit" value="Guess">
       </form>
+      <p>
+        <span id="result4"></span>
+      </p>
 
     </div>
 
@@ -129,6 +137,36 @@ January 7, 2016
       } else{
         document.getElementById("result3").innerHTML = "WRONG!";
       }
+    }
+
+    function guessField(){
+      var ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
+      console.log("secret: " + secret + "\nyour guess: " + ans);
+
+      do
+      {
+        console.log("Entered while loop\nsecret: " + secret + "\nans: " + ans + "\nguessed: " + guessed);
+
+        if(ans > secret){
+          console.log("Your guess is too high");
+          document.getElementById("result4").innerHTML = "Too high. Guess again";
+          ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
+          break;
+        } else if (ans < secret){
+          console.log("Your guess is too low");
+          document.getElementById("result4").innerHTML = "Too low. Guess again";
+          break;
+        } else if (ans === secret){
+          console.log("You guessed it!");
+          alert("You correctly guessed the number " + ans + ". A new number random number will be generated now");
+          secret = Math.floor(Math.random() * (6));
+          console.log("New secret: " + secret);
+          guessed=true;
+        } else{
+          console.log("Invalid input. Enter a number");
+          break;
+        }
+      } while(guessed === false);
     }
     </script>
 
