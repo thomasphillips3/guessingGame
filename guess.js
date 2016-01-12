@@ -109,17 +109,17 @@ function carBox(){
       $("#questionnaire").hide();
     } else {
       $("#noBonus").show();
-      document.getElementById("noBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questinos wrong. You do not qualify for the Bonus Question. Thanks for playing.";
+      document.getElementById("noBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You do not qualify for the Bonus Question. Thanks for playing.";
       $("#results").show()
       $("#noBonus").show();
       $("#questionnaire").hide();
     }
   } else if (ans === ""){
     // Don't count a blank submission as a wrong answer
-    document.getElementById("#result3").innerHTML = "";
+    document.getElementById("result3").innerHTML = "";
   } else{
     wrongCount++;
-    document.getElementById("#result3").innerHTML = "WRONG!";
+    document.getElementById("result3").innerHTML = "WRONG!";
     console.log("Car answered incorrectly");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
