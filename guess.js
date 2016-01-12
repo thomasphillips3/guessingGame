@@ -8,7 +8,8 @@ var wrongCount = 0;
 function hometownClick(){
   if (document.getElementById("dtw").checked){
     rightCount++;
-    console.log("Right hometown");
+    console.log("Hometown correct");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
     document.getElementById("result1").innerHTML = "Right!";
 
     // Hide previous question and display the next after a correct answer
@@ -16,7 +17,8 @@ function hometownClick(){
     $("#hometownSpell").show();
   } else { // If not Detroit, it's wrong
     wrongCount++
-    console.log("Wrong hometown");
+    console.log("Hometown incorrect");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
     document.getElementById("result1").innerHTML = "Wrong! Try again...";
   }
   // document.getElementById("rightCount").innerHTML = rightCount;
@@ -30,7 +32,8 @@ function spellCity(){
   if(city === "Detroit"){
     rightCount++;
     document.getElementById("spellResult").innerHTML = "Right!";
-    console.log("right");
+    console.log("City spelled right");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
 
     // Hide previous question and display the next after a correct answer
     $("#hometownSpell").hide();
@@ -39,8 +42,10 @@ function spellCity(){
     $("#correct1").show();
     $("#band").show();
   } else {
-    document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
     wrongCount++;
+    document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
+    console.log("City spelled wrong");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
   // if(city.substring(0,1) === city.substring(0,1).toLowerCase){
   //   console.log("lower case");
@@ -53,14 +58,18 @@ function playedBand(){
   var yesOrNo = document.getElementById("played").value;
   if (yesOrNo.substring(0,1) === yesOrNo.substring(0,1).toUpperCase()) {
     console.log("lowercase only, please");
-    wrongCount++;
+    alert("Please enter \"yes\" or \"no\"");
+    // wrongCount++; // Do not count this as a wrong answer
   } else if (yesOrNo === "yes"){
     rightCount++;
     $("#band").hide();
     $("#instrument").show();
+    console.log("Correctly answered I played in band.")
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   } else {
+    wrongCount++
     console.log("wrong. i played in band");
-    wrongCount++;
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
 }
 // JS for handling instrument response
@@ -72,9 +81,11 @@ function instrumentBox(){
     $("#instrument").hide();
     $("#correct2").show();
     $("#carQuestion").show();
-    console.log("Score = " + rightCount + "/" + (rightCount+wrongCount));
+    console.log("Instrument answered correctly");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   } else{
     wrongCount++
+    console.log("Instrument answered incorrectly");
     document.getElementById("result2").innerHTML = "WRONG!";
   }
 }
@@ -85,15 +96,32 @@ function carBox(){
   if (ans === "buick"){
     rightCount++;
     document.getElementById("result3").innerHTML = "RIGHT!";
+    console.log("Car answered correctly");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
     $("#result3").hide();
     $("#carQuestion").hide();
     $("#correct3").show();
+    if((wrongCount === 0) && (rightCount > 3)){
+      document.getElementById("yesBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You qualify for the Bonus Question!";
+      $("#results").show()
+      $("#yesBonus").show();
+      $("#stretch").show();
+      $("#questionnaire").hide();
+    } else {
+      $("#noBonus").show();
+      document.getElementById("noBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questinos wrong. You do not qualify for the Bonus Question. Thanks for playing.";
+      $("#results").show()
+      $("#noBonus").show();
+      $("#questionnaire").hide();
+    }
   } else if (ans === ""){
     // Don't count a blank submission as a wrong answer
-    document.getElementById("result3").innerHTML = "";
+    document.getElementById("#result3").innerHTML = "";
   } else{
     wrongCount++;
-    document.getElementById("result3").innerHTML = "WRONG!";
+    document.getElementById("#result3").innerHTML = "WRONG!";
+    console.log("Car answered incorrectly");
+    console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
 }
 

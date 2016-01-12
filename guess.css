@@ -57,7 +57,7 @@
 }
 
 #stretch{
-  /*display:none;*/
+  display:none;
   background-color: navy;
   color:white;
 
@@ -68,4 +68,21 @@
   background-color: navy;
   border: 1px solid black;
   padding: 2px 2px 2px 2px;
+}
+
+#questionnaire{
+}
+
+#yesBonus{
+  display:none;
+  color: green;
+}
+
+#noBonus{
+  display:none;
+  color: red;
+}
+
+#results{
+  display:none;
 }

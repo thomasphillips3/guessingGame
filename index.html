@@ -28,10 +28,10 @@ January 10, 2016
       <p><em>How well do you know me?</em></p>
     </div>
 
-<fieldset>
-  <legend>Thomas Phillips</legend>
-  <!-- Form for hometown question -->
-  <form id="hometownForm" onchange="hometownClick()">
+  <fieldset id="questionnaire">
+    <legend>Thomas Phillips</legend>
+    <!-- Form for hometown question -->
+    <form id="hometownForm" onchange="hometownClick()">
     <h3> What's my hometown?</h3>
     <div>
       <input type="radio" name="hometown" id="chi"> Chicago</input></div>
@@ -51,7 +51,7 @@ January 10, 2016
   <span id="spellResult"></span>
   <div id="correct1"><h3>Question 1</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
-<!-- Form for band question -->
+  <!-- Form for band question -->
   <form id="band">
     <h3> Did I play in band?</h3>
     <input type="text" name="played" id="played"/>
@@ -59,7 +59,7 @@ January 10, 2016
     <input type="button" value="Answer" onclick="playedBand()">
   </form>
 
-<!-- Form for instrument question -->
+  <!-- Form for instrument question -->
   <form id="instrument" onchange="instrumentBox()">
     <h3> I played this instrument in high school band: </h3>
     <input type="radio" name="instrument" id="sax"> Saxophone</input>
@@ -70,40 +70,45 @@ January 10, 2016
   <p><span id="result2"></span></p>
   <div id="correct2"><h3>Question 2</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
 
-<!-- Form for car question -->
-  <form id="carQuestion">
-    <h3>My first car was a</h3>
-    <select id="firstCar" onchange="carBox()">
-      <option value=""/> -- Select -- <br>
-      <option value="acura" id="acu"/> Acura<br>
-      <option value="oldsmobile" id="olds"/> Oldsmobile<br>
-      <option value="buick" id="buick"/> Buick<br>
-    </select>
-  <p><span id="result3"></span></p>
-</form>
-<div id="correct3"><h3>Question 3</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
-</fieldset>
+  <!-- Form for car question -->
+    <form id="carQuestion">
+      <h3>My first car was a</h3>
+      <select id="firstCar" onchange="carBox()">
+        <option value=""/> -- Select -- <br>
+        <option value="acura" id="acu"/> Acura<br>
+        <option value="oldsmobile" id="olds"/> Oldsmobile<br>
+        <option value="buick" id="buick"/> Buick<br>
+      </select>
+    <p><span id="result3"></span></p>
+  </form>
+  <div id="correct3"><h3>Question 3</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
+  </fieldset>
 
-<!-- Div for stretch question -->
-    <fieldset id="stretch">
-      <legend><span id="bonus">Bonus</span></legend>
-      <h3>Guess a number between 0 and 5:</h3>
-      <script>
-        // When this div loads, generate a random number, and set guessed to false
-        var secret = Math.floor(Math.random() * (MAX+1));
-        var guessed=false;
-      </script>
+  <!-- Div for results section -->
+  <fieldset id="results">
+    <legend><span id="finalResults">Results</span></legend>
+    <h3><span id="yesBonus"></span></h3>
+    <h3><span id="noBonus"></span></h3>
+  </fieldset>
 
-      <form id="numberGuess" oninput="guessField()">
-        Pick a number:
-        <input type="text" name="number">
-      </form>
-      <p>
-        <span id="result4"><br></span>
-      </p>
-    </fieldset>
+  <!-- Div for stretch question -->
+  <fieldset id="stretch">
+    <legend><span id="bonus">Bonus</span></legend>
+    <h3>Guess a number between 0 and 5:</h3>
+    <script>
+      // When this div loads, generate a random number, and set guessed to false
+      var secret = Math.floor(Math.random() * (MAX+1));
+      var guessed=false;
+    </script>
 
+    <form id="numberGuess" oninput="guessField()">
+      Pick a number:
+      <input type="text" name="number">
+    </form>
+    <p>
+      <span id="result4"><br></span>
+    </p>
+  </fieldset>
 
-
-  </body>
+</body>
 </html>
