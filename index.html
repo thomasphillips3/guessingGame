@@ -6,40 +6,43 @@ Guessing Game v2
 January 10, 2016
 -->
 
-<!-- JavaScript/ JQuery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="guess.js"></script>
-
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="guess.css">
-
 <html>
   <head>
     <meta charset="utf-8">
     <title>Guessing Game</title>
+    <link rel="stylesheet" type="text/css" href="guess.css">
     <meta name="description" content="Class 3. In-class assignment">
-  </head>
-  <body>
 
-    <div id="header">
+    <!-- JavaScript/ JQuery -->
+    <script src="guess.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <header id="header">
       <h1 class="text1">
         Guessing Game
       </h1>
       <p><em>How well do you know me?</em></p>
-    </div>
+    </header>
 
   <fieldset id="questionnaire">
     <legend>Thomas Phillips</legend>
     <!-- Form for hometown question -->
     <form id="hometownForm" onchange="hometownClick()">
-    <h3> What's my hometown?</h3>
-    <div>
-      <input type="radio" name="hometown" id="chi"> Chicago</input></div>
-    <div>
-      <input type="radio" name="hometown" id="dtw"> Detroit</div>
-    <div>
-      <input type="radio" name="hometown" id="sfo"> San Francisco</div>
-  </form>
+      <h3> What's my hometown?</h3>
+      <div>
+        <input type="radio" name="hometown" id="chi"/> Chicago
+      </div>
+
+      <div>
+        <input type="radio" name="hometown" id="dtw"/> Detroit
+      </div>
+
+      <div>
+        <input type="radio" name="hometown" id="sfo"/> San Francisco
+      </div>
+    </form>
   <p><span id="result1"></span></p>
 
   <!-- This form will show only after the first question is answered correctly -->
@@ -49,7 +52,10 @@ January 10, 2016
     <input type="button" value="Check" onclick="spellCity()"/>
   </form>
   <span id="spellResult"></span>
-  <div id="correct1"><h3>Question 1</h3><img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" /></div>
+  <div id="correct1">
+    <h3>Question 1</h3>
+    <img src="http://www.clipartbest.com/cliparts/di6/yrx/di6yrxXi9.png" height="100px" />
+  </div>
 
   <!-- Form for band question -->
   <form id="band">
@@ -98,7 +104,7 @@ January 10, 2016
     <script>
       // When this div loads, generate a random number, and set guessed to false
       var secret = Math.floor(Math.random() * (MAX+1));
-      var guessed=false;
+      var guessed=false; // TODO: Add to JS function
     </script>
 
     <form id="numberGuess" oninput="guessField()">
@@ -109,6 +115,5 @@ January 10, 2016
       <span id="result4"><br></span>
     </p>
   </fieldset>
-
 </body>
 </html>
