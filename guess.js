@@ -13,8 +13,8 @@ function hometownClick(){
     document.getElementById("result1").innerHTML = "Right!";
 
     // Hide previous question and display the next after a correct answer
-    document.getElementById("hometownForm").style.display = "none";
-    document.getElementById("hometownSpell").style.display = "block";
+    hide("hometownForm");
+    show("hometownSpell");
 
   } else { // If not Detroit, it's wrong
     wrongCount++;
@@ -22,8 +22,6 @@ function hometownClick(){
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
     document.getElementById("result1").innerHTML = "Wrong! Try again...";
   }
-  // document.getElementById("rightCount").innerHTML = rightCount;
-  // document.getElementById("wrongCount").innerHTML = wrongCount;
 }
 
 // Make sure my city is spelled right
@@ -37,11 +35,11 @@ function spellCity(){
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
 
     // Hide previous question and display the next after a correct answer
-    document.getElementById("hometownSpell").style.display = "none";
-    document.getElementById("result1").style.display = "none";
-    document.getElementById("spellResult").style.display = "none";
-    document.getElementById("correct1").style.display = "block";
-    document.getElementById("band").style.display = "block";
+    hide("hometownSpell");
+    hide("result1");
+    hide("spellResult");
+    show("correct1");
+    show("band");
 
   } else {
     wrongCount++;
@@ -56,11 +54,10 @@ function playedBand(){
   if (yesOrNo.substring(0,1) === yesOrNo.substring(0,1).toUpperCase()) {
     console.log("lowercase only, please");
     alert("Please enter \"yes\" or \"no\"");
-    // wrongCount++; // Do not count this as a wrong answer
   } else if (yesOrNo === "yes"){
     rightCount++;
-    document.getElementById("band").style.display = "none";
-    document.getElementById("instrument").style.display = "block";
+    hide("band");
+    show("instrument");
     console.log("Correctly answered I played in band.")
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   } else {
@@ -74,10 +71,10 @@ function instrumentBox(){
   if (document.getElementById("sax").checked){
     rightCount++;
     document.getElementById("result2").innerHTML = "RIGHT!";
-    document.getElementById("result2").style.display = "none";
-    document.getElementById("instrument").style.display = "none";
-    document.getElementById("correct2").style.display = "block";
-    document.getElementById("carQuestion").style.display = "block";
+    hide("result2");
+    hide("instrument");
+    show("correct2");
+    show("carQuestion");
     console.log("Instrument answered correctly");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   } else{
@@ -96,21 +93,20 @@ function carBox(){
     console.log("Car answered correctly");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
     // $("#result3").hide();
-    // document.getElementById("restult3").style.display = "none";
-    document.getElementById("carQuestion").style.display = "block";
-    document.getElementById("correct3").style.display = "block";
+    show("carQuestion");
+    show("correct3");
     if((wrongCount === 0) && (rightCount > 3)){
       document.getElementById("yesBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You qualify for the Bonus Question!";
-      document.getElementById("results").style.display = "block";
-      document.getElementById("yesBonus").style.display = "block";
-      document.getElementById("stretch").style.display = "block";
-      document.getElementById("questionnaire").style.display = "none";
+      show("results");
+      show("yesBonus");
+      show("stretch");
+      hide("questionnaire");
     } else {
-      document.getElementById("noBonus").style.display = "block";
+      show("noBonus");
       document.getElementById("noBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You do not qualify for the Bonus Question. Thanks for playing.";
-      document.getElementById("results").style.display = "block";
-      document.getElementById("noBonus").style.display = "block";
-      document.getElementById("questionnaire").style.display = "none";
+      show("results");
+      show("noBonus");
+      hide("questionnaire");
     }
   } else if (ans === ""){
     // Don't count a blank submission as a wrong answer
@@ -154,4 +150,12 @@ function guessField(){
       break;
     }
   } while(guessed === false);
+}
+
+function hide(id){
+  document.getElementById(id).style.display = "none";
+}
+
+function show(id){
+  document.getElementById(id).style.display = "block";
 }
