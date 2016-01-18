@@ -10,7 +10,7 @@ function hometownClick(){
     rightCount++;
     console.log("Hometown correct");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
-    document.getElementById("result1").innerHTML = "Right!";
+    write("result1", "Right!");
 
     // Hide previous question and display the next after a correct answer
     hide("hometownForm");
@@ -20,7 +20,7 @@ function hometownClick(){
     wrongCount++;
     console.log("Hometown incorrect");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
-    document.getElementById("result1").innerHTML = "Wrong! Try again...";
+    write("result1", "Wrong! Try again...");
   }
 }
 
@@ -30,7 +30,7 @@ function spellCity(){
   // Make sure the first letter is capitalized
   if(city === "Detroit"){
     rightCount++;
-    document.getElementById("spellResult").innerHTML = "Right!";
+    write("spellResult", "Right!");
     console.log("City spelled right");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
 
@@ -43,7 +43,7 @@ function spellCity(){
 
   } else {
     wrongCount++;
-    document.getElementById("spellResult").innerHTML = "Wrong! Try again...";
+    write("spellResult", "Wrong! Try again...");
     console.log("City spelled wrong");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
@@ -70,7 +70,7 @@ function playedBand(){
 function instrumentBox(){
   if (document.getElementById("sax").checked){
     rightCount++;
-    document.getElementById("result2").innerHTML = "RIGHT!";
+    write("result2", "Right!");
     hide("result2");
     hide("instrument");
     show("correct2");
@@ -80,7 +80,7 @@ function instrumentBox(){
   } else{
     wrongCount++
     console.log("Instrument answered incorrectly");
-    document.getElementById("result2").innerHTML = "WRONG!";
+    write("result2", "Wrong!");
   }
 }
 
@@ -89,31 +89,30 @@ function carBox(){
   var ans = document.getElementById("firstCar").value;
   if (ans === "buick"){
     rightCount++;
-    document.getElementById("result3").innerHTML = "RIGHT!";
+    write("result3", "Right!");
     console.log("Car answered correctly");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
-    // $("#result3").hide();
     show("carQuestion");
     show("correct3");
     if((wrongCount === 0) && (rightCount > 3)){
-      document.getElementById("yesBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You qualify for the Bonus Question!";
+      write("yesBonus", "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You qualify for the Bonus Question!");
       show("results");
       show("yesBonus");
       show("stretch");
       hide("questionnaire");
     } else {
       show("noBonus");
-      document.getElementById("noBonus").innerHTML = "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You do not qualify for the Bonus Question. Thanks for playing.";
+      write("noBonus", "You answered " + rightCount + " questions right, and " + wrongCount + " questions wrong. You do not qualify for the Bonus Question. Thanks for playing.");
       show("results");
       show("noBonus");
       hide("questionnaire");
     }
   } else if (ans === ""){
     // Don't count a blank submission as a wrong answer
-    document.getElementById("result3").innerHTML = "";
+    write("result3", "");
   } else{
     wrongCount++;
-    document.getElementById("result3").innerHTML = "WRONG!";
+    write("result3", "Wrong!");
     console.log("Car answered incorrectly");
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
@@ -131,22 +130,22 @@ function guessField(){
 
     if(ans > secret){
       console.log("Your guess is too high");
-      document.getElementById("result4").innerHTML = ans + " is too high. Guess again";
+      write("result4", ans + " is too high. Guess again");
       break;
     } else if (ans < secret){
       console.log("Your guess is too low");
-      document.getElementById("result4").innerHTML = ans + " is too low. Guess again";
+      write("result4", ans + " is too low. Guess again");
       break;
     } else if (ans === secret){
       console.log("You guessed it!");
-      document.getElementById("result4").innerHTML = "You correctly guessed the number " + ans + ". A new number random number will be generated now";
+      write("result4", "You correctly guessed the number " + ans + ". A new number random number will be generated now");
       alert("You correctly guessed the number " + ans + ". A new number random number will be generated now");
       secret = Math.floor(Math.random() * (MAX+1));
       console.log("New secret: " + secret);
       guessed=true;
     } else { // If this else is reached, the input must be invalid. Prompt the user, and get a new guess.
       console.log("Invalid input. Enter a number");
-      document.getElementById("result4").innerHTML = "Invalid input. Please enter a number between 0 and 5";
+      write("result4", "Invalid input. Please enter a number between 0 and 5");
       break;
     }
   } while(guessed === false);
@@ -158,4 +157,8 @@ function hide(id){
 
 function show(id){
   document.getElementById(id).style.display = "block";
+}
+
+function write(id, msg){
+  document.getElementById(id).innerHTML = msg;
 }
