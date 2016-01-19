@@ -4,7 +4,7 @@ var i=0;
 var rightCount = 0;
 var wrongCount = 0;
 
-// JS for handling hometown response
+// Function for handling hometown response
 function hometownClick(){
   if (document.getElementById("dtw").checked){
     rightCount++;
@@ -49,6 +49,7 @@ function spellCity(){
   }
 }
 
+// Function for handling band response
 function playedBand(){
   var yesOrNo = document.getElementById("played").value;
   if (yesOrNo.substring(0,1) === yesOrNo.substring(0,1).toUpperCase()) {
@@ -66,7 +67,8 @@ function playedBand(){
     console.log("Right: " + rightCount + " Wrong: " + wrongCount);
   }
 }
-// JS for handling instrument response
+
+// Function for handling instrument response
 function instrumentBox(){
   if (document.getElementById("sax").checked){
     rightCount++;
@@ -84,7 +86,7 @@ function instrumentBox(){
   }
 }
 
-// JS for handling car response
+// Function for handling car response
 function carBox(){
   var ans = document.getElementById("firstCar").value;
   if (ans === "buick"){
@@ -118,7 +120,7 @@ function carBox(){
   }
 }
 
-// JS for handling guesses for stretch response
+// Function for handling guesses for stretch response
 function guessField(){
   // Store the input entered into the text field into a variable "ans" and immediately cast to int
   var ans = parseInt(document.getElementById("numberGuess").elements["number"].value);
@@ -151,14 +153,13 @@ function guessField(){
   } while(guessed === false);
 }
 
+
 function hide(id){
   document.getElementById(id).style.display = "none";
 }
-
 function show(id){
   document.getElementById(id).style.display = "block";
 }
-
 function write(id, msg){
   document.getElementById(id).innerHTML = msg;
 }
